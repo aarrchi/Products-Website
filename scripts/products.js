@@ -1,17 +1,33 @@
+let backendProds = [];
+
 const getProducts = async () => {
   try {
     const response = await fetch("https://dummyjson.com/products");
     const { products } = await response.json();
-    console.log(products);
+    //console.log(products);
     return products;
-    
   } catch (error) {
     console.log(error);
   }
 };
 
-getProducts().then((products) => {
-  products.forEach((prod) => {
+getProducts()
+  .then((products) => {
+    backendProds = products;
+    filteredProducts(backendProds);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+function filteredProducts(backendProds) {
+  console.log("backe", backendProds);
+  document.getElementById("container").innerHTML = "";
+
+  //console.log(backendProds);
+  //console.log(products);
+  backendProds.forEach((prod) => {
+    console.log(prod);
     const container = document.getElementById("container");
 
     const cardDiv = document.createElement("div");
@@ -39,8 +55,29 @@ getProducts().then((products) => {
         : prod.description;
 
     const cardButton = document.createElement("button");
-    cardButton.classList.add("btn", "btn-primary", "btn-sm");
+    cardButton.classList.add("btn", "btn-primary", "btn-sm", "mt-2");
     cardButton.innerText = "View Details";
+
+    const editButton = document.createElement("button");
+    editButton.classList.add("btn", "btn-secondary", "btn-sm", "ms-3", "mt-2");
+    editButton.innerText = "Edit";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("btn", "btn-danger", "btn-sm", "ms-2", "mt-2");
+    deleteButton.innerText = "Delete";
+
+    deleteButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      console.log(prod.id);
+
+      backendProds = backendProds.filter((val) => {
+        if (val.id !== prod.id) {
+          return val;
+        }
+      });
+      //console.log(backendProds);
+      filteredProducts(backendProds);
+    });
 
     container.appendChild(cardDiv);
     cardDiv.appendChild(cardImage);
@@ -48,7 +85,7 @@ getProducts().then((products) => {
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardP);
     cardBody.appendChild(cardButton);
+    cardBody.appendChild(editButton);
+    cardBody.appendChild(deleteButton);
   });
-}).catch((error) => {
-    console.log(error);
-});
+}
