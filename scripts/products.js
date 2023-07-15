@@ -54,9 +54,18 @@ function filteredProducts(backendProds) {
         ? prod.description.slice(0, 30) + "..."
         : prod.description;
 
-    const cardButton = document.createElement("button");
-    cardButton.classList.add("btn", "btn-primary", "btn-sm", "mt-2");
-    cardButton.innerText = "View Details";
+    const viewDetailsButton = document.createElement("button");
+    viewDetailsButton.classList.add("btn", "btn-primary", "btn-sm", "mt-2");
+    viewDetailsButton.innerText = "View Details";
+
+    viewDetailsButton.setAttribute("data-bs-toggle", "modal");
+    viewDetailsButton.setAttribute("data-bs-target", "#view-details");
+    viewDetailsButton.addEventListener("click", (event) => {
+      document.getElementById("prod-img-details").src = prod.thumbnail;
+      document.getElementById("prod-name-details").value = prod.title;
+      document.getElementById("prod-description-details").value =
+        prod.description;
+    });
 
     const editButton = document.createElement("button");
     editButton.classList.add("btn", "btn-secondary", "btn-sm", "ms-3", "mt-2");
@@ -84,7 +93,7 @@ function filteredProducts(backendProds) {
     cardDiv.appendChild(cardBody);
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardP);
-    cardBody.appendChild(cardButton);
+    cardBody.appendChild(viewDetailsButton);
     cardBody.appendChild(editButton);
     cardBody.appendChild(deleteButton);
   });
@@ -110,6 +119,6 @@ function filteredProducts(backendProds) {
 
     const newProds = [data, ...backendProds];
     filteredProducts(newProds);
-    document.getElementById('close-btn').click();
+    document.getElementById("close-btn").click();
   });
 }

@@ -26,7 +26,7 @@
       class="container d-flex flex-wrap justify-content-between ps-5"
     ></div>
 
-    <!-- Modal -->
+    <!-- Add Product Modal -->
     <div
       class="modal fade"
       id="addProducts"
@@ -90,6 +90,82 @@
                 </button>
                 <button type="button" class="btn btn-primary" id="add-button">
                   Add Product
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--View Details Modal-->
+    <div
+      class="modal fade"
+      id="view-details"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              Product Details
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <img
+                id="prod-img-details"
+                class="card-img-top"
+                alt="product-image"
+                ,
+                disabled
+              />
+
+              <div class="card-body">
+                <div class="card-title mb-3">
+                  <input
+                    type="text"
+                    id="prod-name-details"
+                    class="form-control"
+                    ,
+                    disabled
+                  />
+                </div>
+
+                <div class="card-text mb-3">
+                  <textarea
+                    name="prod-description"
+                    id="prod-description-details"
+                    cols="20"
+                    rows="4"
+                    class="form-control"
+                    ,
+                    disabled
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <button
+                  id="close-btn-details"
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary" id="add-button">
+                  Understood
                 </button>
               </div>
             </div>
