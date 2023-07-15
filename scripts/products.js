@@ -88,4 +88,27 @@ function filteredProducts(backendProds) {
     cardBody.appendChild(editButton);
     cardBody.appendChild(deleteButton);
   });
+
+  const addBTN = document.getElementById("add-button");
+  addBTN.addEventListener("click", (event) => {
+    console.log("clciked");
+
+    const title = document.getElementById("prod-name").value;
+    const thumbnail = document.getElementById("prod-image").value;
+    const description = document.getElementById("prod-description").value;
+
+    const data = {
+      id: Date.now(),
+      title,
+      thumbnail,
+      description,
+    };
+
+    //backendProds.push(data);
+    //filteredProducts(backendProds);
+    //OR
+
+    const newProds = [data, ...backendProds];
+    filteredProducts(newProds);
+  });
 }

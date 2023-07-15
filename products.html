@@ -13,9 +13,89 @@
   </head>
   <body>
     <div
+      class="container mt-3 mx-auto mb-2"
+      data-bs-toggle="modal"
+      data-bs-target="#addProducts"
+    >
+      <h3>List Products</h3>
+      <button class="btn btn-outline-primary">Add Products</button>
+    </div>
+
+    <div
       id="container"
       class="container d-flex flex-wrap justify-content-between ps-5"
     ></div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="addProducts"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Add Products</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="prod-name"
+                    placeholder="Enter product Name"
+                    class="form-control"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="prod-image"
+                    placeholder="Enter product Image link"
+                    class="form-control"
+                  />
+                </div>
+
+                <div>
+                  <textarea
+                    name="prod-description"
+                    id="prod-description"
+                    cols="20"
+                    rows="4"
+                    placeholder="Enter product description"
+                    class="form-control"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary" id="add-button">
+                  Add Product
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 
   <script type="text/javascript" src="./scripts/products.js"></script>
