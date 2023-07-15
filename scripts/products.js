@@ -110,5 +110,6 @@ function filteredProducts(backendProds) {
 
     const newProds = [data, ...backendProds];
     filteredProducts(newProds);
+    document.getElementById('close-btn').click();
   });
 }
